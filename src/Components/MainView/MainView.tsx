@@ -56,6 +56,15 @@ function MainView() {
           View Cart
         </Button>
       </Flex>
+	  <Text
+          as='a'
+          fontSize='1.3rem'
+          color='gray.900'
+          fontFamily='Robo'
+          my='5px'
+        >
+          Men With Taste
+        </Text>
       <Divider />
       <Box mt={4}>
         <SimpleGrid
