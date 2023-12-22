@@ -10,7 +10,6 @@ import {
   Button,
   SimpleGrid,
   Flex,
-  Center
 } from '@chakra-ui/react';
 import { FiShoppingCart, FiShoppingBag } from 'react-icons/fi';
 
