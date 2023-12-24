@@ -13,11 +13,16 @@ import {
 } from '@chakra-ui/react';
 import { FiShoppingCart, FiShoppingBag } from 'react-icons/fi';
 
+//butter initalization for databse 
 const butter: any = Butter(process.env.REACT_APP_BUTTER_ECOMMERCE as string);
 
 function MainView() {
+
+	//products from butter ecommerce database
   const [products, setProducts] = useState<any[]>([]);
 
+
+  
   useEffect(() => {
     async function fetchData() {
       const res = await butter.content.retrieve(['jovos'], {
