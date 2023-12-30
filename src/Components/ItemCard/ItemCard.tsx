@@ -19,6 +19,7 @@ const ItemCard = ({ products }: { products: any }) => {
         >
           <Link to={`/products/${products.id}`}>
             <Image
+			style={{maxWidth: '73%'}}
               h='350px'
               fit='cover'
               src={products.image}
