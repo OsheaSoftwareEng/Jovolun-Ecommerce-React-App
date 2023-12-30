@@ -15,7 +15,7 @@ const ItemView = ({ products }: { products: any}) => {
 //     (product: any) => product.id === id
 //   );
 
-const findProduct = products.find((product: any) => product.id === 5);
+const findProduct = products.find((product: any) => product.id === id);
 
   console.log(findProduct);
 
