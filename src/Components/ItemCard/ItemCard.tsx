@@ -15,7 +15,7 @@ const ItemCard = ({ products }: { products: any }) => {
           rounded='lg'
           shadow='lg'
           _hover={{ shadow: 'dark-lg' }}
-          key={products.id}
+
         >
           <Link to={`/products/${products.id}`}>
             <Image
@@ -28,7 +28,6 @@ const ItemCard = ({ products }: { products: any }) => {
               justifyContent='center'
               ml={10}
               marginTop={5}
-              key={products.id}
             />
           </Link>
           <Box p='6'>
