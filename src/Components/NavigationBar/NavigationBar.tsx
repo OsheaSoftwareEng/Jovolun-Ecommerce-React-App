@@ -33,6 +33,7 @@ const NavigationBar = () => {
         fontSize='1.3rem'
         color='gray.900'
         fontFamily='Robo'
+		fontStyle='italic'
         my='5px'
       >
         Men With Taste
