@@ -13,7 +13,7 @@ const butter: any = Butter(process.env.REACT_APP_BUTTER_ECOMMERCE as any);
 
 function MainView() {
   //products from butter ecommerce database
-  const [products, setProducts] = useState<string[] | number[]>([]);
+  const [products, setProducts] = useState<any>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -34,36 +34,19 @@ function MainView() {
  
 
   return ( 
-    <>
-      <Container marginLeft={10} maxW='container.xl'>
-        <NavigationBar />
-      </Container>
+    <> 
       <BrowserRouter>
         <Routes>
           <Route
             path='/'
             element={products.map((products: any ) => (
-              <div style={{ display: 'inline-block' }} key={products.id}>
-                <Container
-                  marginLeft={10}
-                  maxW='container.md'
-                  key={products.id}
-                >
-                  <SimpleGrid
-                    minChildWidth='300px'
-                    spacing='40px'
-                    key={products.id}
-                  >
                     <ItemCard products={products} key={products.id} />
-                  </SimpleGrid>
-                </Container>
-              </div>
             ))}
           />
           <Route
             path='/products/:id'
-            // Component={(products: any) => (
-            //   <ItemView products={products} findProduct={findProduct} />
+            // Component={() => (
+            //   <ItemView products={products}/>
             // )}
 
             element={<ItemView products={products} />}
