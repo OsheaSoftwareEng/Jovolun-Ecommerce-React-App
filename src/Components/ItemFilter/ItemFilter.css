@@ -1,0 +1,12 @@
+.filterOptions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  padding: 7px;
+}
