@@ -4,7 +4,13 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { StarIcon } from '@chakra-ui/icons';
 
-const ItemCard = ({ products }: { products: any }) => {
+const ItemCard = ({
+  products,
+  onItemClick
+}: {
+  products: any;
+  onItemClick: any;
+}) => {
   return (
     <>
       <Box mt={4}>
@@ -15,11 +21,11 @@ const ItemCard = ({ products }: { products: any }) => {
           rounded='lg'
           shadow='lg'
           _hover={{ shadow: 'dark-lg' }}
-
         >
           <Link to={`/products/${products.id}`}>
             <Image
-			style={{maxWidth: '73%'}}
+              onClick={onItemClick}
+              style={{ maxWidth: '73%' }}
               h='350px'
               fit='cover'
               src={products.image}
