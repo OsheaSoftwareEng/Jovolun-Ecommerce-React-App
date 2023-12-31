@@ -4,15 +4,14 @@ import './index.css';
 import MainView from './Components/MainView/MainView';
 import { ChakraProvider, Container, SimpleGrid } from '@chakra-ui/react';
 import NavigationBar from './Components/NavigationBar/NavigationBar';
+import ItemFilter from './Components/ItemFilter/ItemFilter';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <ChakraProvider>
-    <Container maxW='2x0'>
-      <NavigationBar />
-      <SimpleGrid minChildWidth='300px' spacing='40px'>
-        <MainView />
-      </SimpleGrid>
-    </Container>
+    <BrowserRouter>
+      <MainView />
+    </BrowserRouter>
   </ChakraProvider>
 );
