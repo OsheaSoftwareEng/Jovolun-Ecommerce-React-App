@@ -6,10 +6,10 @@ import {
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton
+  DrawerCloseButton,
+  Button,
+  useDisclosure
 } from '@chakra-ui/react';
-import { Button } from '@chakra-ui/react';
-import { useDisclosure } from '@chakra-ui/react';
 import './ItemFilter.css';
 import FilterListItem from '../FilterListItem/FilterListItem';
 
