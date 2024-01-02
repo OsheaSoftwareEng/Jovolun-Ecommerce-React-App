@@ -1,25 +1,12 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import Butter from 'buttercms';
-import {
-  Container,
-  SimpleGrid,
-  Box,
-  AbsoluteCenter,
-  Divider
-} from '@chakra-ui/react';
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate
-} from 'react-router-dom';
+import { Container, SimpleGrid } from '@chakra-ui/react';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import ItemCard from '../ItemCard/ItemCard';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import ItemView from '../ItemsView/ItemsView';
 import ItemFilter from '../ItemFilter/ItemFilter';
-import ViewItemLogo from '../ViewItemLogo/ViewItemLogo';
 
 //butter initalization for databse
 const butter: any = Butter(process.env.REACT_APP_BUTTER_ECOMMERCE as any);
@@ -65,7 +52,6 @@ function MainView() {
       <Container maxW='2x0'>
         <NavigationBar />
         {showItemFilter && <ItemFilter products={products} />}
-        <ViewItemLogo products={products} />
         <SimpleGrid minChildWidth='300px' spacing='40px'>
           <Routes>
             <Route
