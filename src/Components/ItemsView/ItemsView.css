@@ -1,0 +1,37 @@
+.grid {
+  display: grid;
+  padding: 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  gap: 20%;
+}
+
+.view-btn {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-direction: row;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.padding {
+  padding: 15px;
+}
+
+#btn-style {
+  color: white;
+  background-color: black;
+  transition: 0.4;
+}
+
+#btn-style:hover {
+  background-color: rgb(35, 35, 35);
+}
