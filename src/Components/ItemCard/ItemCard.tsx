@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Text, Box, Image, Button, Flex } from '@chakra-ui/react';
-import { FiShoppingCart } from 'react-icons/fi';
+import { Text, Box, Image, Flex } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { StarIcon } from '@chakra-ui/icons';
 
