@@ -30,22 +30,30 @@ const ItemView = ({ products }: { products: any }) => {
       {findProduct ? (
         <div className='grid'>
           <div className='flex'>
+            <div className='padding'>
+              <Text
+                className='padding hidden brand-name-sm'
+                fontSize='1xl'
+                as='b'
+              >
+                {findProduct.name}
+              </Text>
+              <div className='border'></div>
+            </div>
             <Image
-              h='100%'
-              w='30%'
-              fit='cover'
+              id='view-image'
+              w='600px'
               src={findProduct.detaillogo}
               alt={`Picture of ${findProduct.name}`}
               mt={0}
               p={1}
-              borderRadius={15}
               justifyContent='center'
-              ml={10}
-              marginTop={5}
+              ml={-80}
+              marginTop={0}
             />
             <div className='item-details'>
-              <div className='padding'>
-                <Text className='padding' fontSize='1xl' as='b'>
+              <div className='padding item-details'>
+                <Text className='padding hidden-full' fontSize='1xl' as='b'>
                   {findProduct.name}
                 </Text>
                 <div className='padding'>
@@ -53,7 +61,7 @@ const ItemView = ({ products }: { products: any }) => {
                     {findProduct.description}
                   </Text>
                 </div>
-                <div>
+                <div className='ratings-styles'>
                   <Box p={5} display='flex' alignItems='center'>
                     {Array(5)
                       .fill('')
@@ -77,68 +85,70 @@ const ItemView = ({ products }: { products: any }) => {
                       {findProduct.reviewcount}
                     </Box>
                   </Box>
-                  <div className='padding'>
-                    <Text fontSize='1xl' as='b'>
-                      ${findProduct.price}.00
-                    </Text>
-                  </div>
-                  <div className='padding'>
-                    <Text fontSize='2xl' as='b'>
-                      SIZE: {findProduct.size} OZ
-                    </Text>
-                  </div>
-                  <div className='view-btn padding'>
-                    <Button variant='outline' colorScheme='grey'>
-                      {findProduct.size}0 oz
-                    </Button>
-                    <Button variant='outline' colorScheme='grey'>
-                      {findProduct.sizetwo}0 oz
-                    </Button>
-                  </div>
-                  <div className='btn-container padding'>
-                    <Button
-                      marginBottom={5}
-                      size='lg'
-                      variant='solid'
-                      colorScheme='green'
-                      className='snipcart-add-item'
-                      data-item-id={findProduct.id}
-                      data-item-image={findProduct.image}
-                      data-item-name={findProduct.name}
-                      // data-item-url='/products/:id'
-                      data-item-description={findProduct.description}
-                      data-item-price={findProduct.price}
-                      data-item-size={findProduct.size}
-                    >
-                      Add To Cart
-                    </Button>
-                    <Button
-                      // className='snipcart-checkout'
-                      id='btn-style'
-                      size='lg'
-                      variant='solid'
-                      colorScheme='black'
-                    >
-                      Buy Now
-                    </Button>
-                    <div>
-                      <Accordion w='100%' marginTop={8} allowToggle>
-                        <AccordionItem>
-                          <h1>
-                            <AccordionButton
-                              _expanded={{ bg: 'grey', color: 'white' }}
-                            >
-                              <Box as='span' flex='1' textAlign='left'>
-                                Product Details
-                              </Box>
-                              <AccordionIcon />
-                            </AccordionButton>
-                          </h1>
-                          <AccordionPanel>
-                            {findProduct.productdescription}
-                          </AccordionPanel>
-                        </AccordionItem>
-                      </Accordion>
+                  <div className='price-buy-container'>
+                    <div className='padding'>
+                      <Text fontSize='1xl' as='b'>
+                        ${findProduct.price}.00
+                      </Text>
+                    </div>
+                    <div className='padding'>
+                      <Text fontSize='2xl' as='b'>
+                        SIZE: {findProduct.size} OZ
+                      </Text>
+                    </div>
+                    <div className='view-btn padding'>
+                      <Button variant='outline' colorScheme='grey'>
+                        {findProduct.size}0 oz
+                      </Button>
+                      <Button variant='outline' colorScheme='grey'>
+                        {findProduct.sizetwo}0 oz
+                      </Button>
+                    </div>
+                    <div className='btn-container padding'>
+                      <Button
+                        marginBottom={5}
+                        size='lg'
+                        variant='solid'
+                        colorScheme='green'
+                        className='snipcart-add-item'
+                        data-item-id={findProduct.id}
+                        data-item-image={findProduct.image}
+                        data-item-name={findProduct.name}
+                        // data-item-url='/products/:id'
+                        data-item-description={findProduct.description}
+                        data-item-price={findProduct.price}
+                        data-item-size={findProduct.size}
+                      >
+                        Add To Cart
+                      </Button>
+                      <Button
+                        // className='snipcart-checkout'
+                        id='btn-style'
+                        size='lg'
+                        variant='solid'
+                        colorScheme='black'
+                      >
+                        Buy Now
+                      </Button>
+                      <div>
+                        <Accordion w='100%' marginTop={8} allowToggle>
+                          <AccordionItem>
+                            <h1>
+                              <AccordionButton
+                                _expanded={{ bg: 'grey', color: 'white' }}
+                              >
+                                <Box as='span' flex='1' textAlign='left'>
+                                  Product Details
+                                </Box>
+                                <AccordionIcon />
+                              </AccordionButton>
+                            </h1>
+                            <AccordionPanel>
+                              {findProduct.productdescription}
+                            </AccordionPanel>
+                          </AccordionItem>
+                        </Accordion>
+                      </div>
                     </div>
                   </div>
                 </div>
