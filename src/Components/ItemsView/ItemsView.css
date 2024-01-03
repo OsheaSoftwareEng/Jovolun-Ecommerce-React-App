@@ -3,10 +3,15 @@
   padding: 10px;
 }
 
+.hidden {
+  display: none;
+}
+
 .flex {
   display: flex;
   justify-content: center;
-  gap: 20%;
+  gap: 0px;
+  margin-top: 5px;
 }
 
 .view-btn {
@@ -34,4 +39,77 @@
 
 #btn-style:hover {
   background-color: rgb(35, 35, 35);
+}
+
+@media (min-width: 320px) and (max-width: 500px) {
+  .flex {
+    flex-direction: column;
+    gap: 0%;
+  }
+  #view-image {
+    position: relative;
+    right: 50px;
+    margin-left: 15px;
+  }
+
+  .hidden {
+    display: block;
+  }
+
+  .hidden-full {
+    display: none;
+  }
+
+  .padding {
+    padding: 11px;
+  }
+
+  .brand-name-sm {
+    font-size: 25px;
+    padding: 1px;
+    margin-left: -27px;
+  }
+
+  .border {
+    border-bottom: solid 2px rgb(192, 192, 192);
+    margin-left: -25px;
+    width: 138px;
+  }
+
+  .price-buy-container {
+    margin-top: -34px;
+  }
+
+  .ratings-style {
+    margin-right: 10px;
+    width: 500px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .item-details {
+    width: 330px;
+  }
+
+  #view-image {
+    width: 520px;
+  }
+
+  .flex {
+    justify-content: end;
+  }
+}
+
+@media (min-width: 1023px) and (max-width: 1439px) {
+  .item-details {
+    width: 330px;
+  }
+
+  #view-image {
+    width: 600px;
+  }
+
+  .flex {
+    justify-content: center;
+  }
 }
