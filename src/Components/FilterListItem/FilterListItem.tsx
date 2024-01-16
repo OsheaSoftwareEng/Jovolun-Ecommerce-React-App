@@ -15,6 +15,7 @@ const FilterListItem = ({ products }: { products: any }) => {
   const brandNames: any = new Map([
     ...products.map((products: { name: any }) => [products.name])
   ]);
+
   // converting brandnames into an array
   const newBrand = Array.from(brandNames);
 
@@ -33,7 +34,8 @@ const FilterListItem = ({ products }: { products: any }) => {
     '$500 & Above'
   ];
 
-  const ratingArray = [5, 4, 3];
+  const ratingSet = new Set(products.map((product: any) => product.rating));
+  const ratingArray = Array.from(ratingSet);
 
   return (
     <Accordion allowToggle>
@@ -48,7 +50,9 @@ const FilterListItem = ({ products }: { products: any }) => {
         </h1>
         <AccordionPanel>
           {newBrand.map((newBrand: any) => (
-            <Checkbox className='checkbox'>{newBrand}</Checkbox>
+            <Checkbox key={newBrand} className='checkbox'>
+              {newBrand}
+            </Checkbox>
           ))}
         </AccordionPanel>
       </AccordionItem>
@@ -63,7 +67,9 @@ const FilterListItem = ({ products }: { products: any }) => {
         </h1>
         <AccordionPanel>
           {priceArray.map((price: any) => (
-            <Checkbox className='checkbox'>{price}</Checkbox>
+            <Checkbox key={price} className='checkbox'>
+              {price}
+            </Checkbox>
           ))}
         </AccordionPanel>
       </AccordionItem>
@@ -78,7 +84,9 @@ const FilterListItem = ({ products }: { products: any }) => {
         </h1>
         <AccordionPanel>
           {newSize.map((size: any) => (
-            <Checkbox className='checkbox'>{size}</Checkbox>
+            <Checkbox key={size} className='checkbox'>
+              {size}
+            </Checkbox>
           ))}
         </AccordionPanel>
       </AccordionItem>
@@ -92,20 +100,21 @@ const FilterListItem = ({ products }: { products: any }) => {
           </AccordionButton>
         </h1>
         <AccordionPanel>
-          <Checkbox className='checkbox'>
-            <Box display='flex' mb='2' alignItems='center'>
-              {Array(5)
-                .fill('')
-                .map((_, i) => (
-                  // {ratingArray.map((array: any) => ())}
-                  <StarIcon
-                    boxSize='0.8em'
-                    key={i}
-                    color={i < ratingArray[0] ? 'black.500' : 'gray.300'}
-                  />
-                ))}
-            </Box>
-          </Checkbox>
+          {ratingArray.map((rating: any, productIndex: any) => (
+            <Checkbox key={rating} className='checkbox'>
+              <Box key={productIndex} display='flex' mb='2' alignItems='center'>
+                {Array(5)
+                  .fill('')
+                  .map((_, index) => (
+                    <StarIcon
+                      key={index}
+                      boxSize='0.8em'
+                      color={index < rating ? 'black.500' : 'gray.300'}
+                    />
+                  ))}
+              </Box>
+            </Checkbox>
+          ))}
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
