@@ -14,6 +14,7 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import './ItemsView.css';
 import { StarIcon } from '@chakra-ui/icons';
+import { useState, useEffect } from 'react';
 
 const ItemView = ({ products }: { products: any }) => {
   const { id } = useParams<{ id: any }>();
@@ -23,7 +24,25 @@ const ItemView = ({ products }: { products: any }) => {
 
   const findProduct = products.find((product: any) => product.id === productID);
 
-  console.log(findProduct);
+  const [selectedSize, setSelectedSize] = useState(findProduct?.size || '');
+  const [selectInfo, setSelectInfo] = useState(findProduct?.description || '');
+  const [selectPrice, setSelectPrice] = useState(findProduct?.price || '');
+
+  useEffect(() => {
+    setSelectedSize(findProduct?.size || '');
+    setSelectInfo(findProduct?.description || '');
+    setSelectPrice(findProduct?.price || '');
+  }, [findProduct]);
+
+  const handleSizeButtonClick = (size: string) => {
+    setSelectedSize(size);
+    setSelectInfo(
+      findProduct[`description${size === findProduct.size ? '' : 'two'}`]
+    );
+    setSelectPrice(
+      findProduct[`price${size === findProduct.size ? '' : 'two'}`]
+    );
+  };
 
   return (
     <>
@@ -58,7 +77,7 @@ const ItemView = ({ products }: { products: any }) => {
                 </Text>
                 <div className='padding'>
                   <Text fontSize='3xl' as='b'>
-                    {findProduct.description}
+                    {selectInfo}
                   </Text>
                 </div>
                 <div className='ratings-styles'>
@@ -88,19 +107,41 @@ const ItemView = ({ products }: { products: any }) => {
                   <div className='price-buy-container'>
                     <div className='padding'>
                       <Text fontSize='1xl' as='b'>
-                        ${findProduct.price}.00
+                        ${selectPrice}.00
                       </Text>
                     </div>
                     <div className='padding'>
                       <Text fontSize='2xl' as='b'>
-                        SIZE: {findProduct.size} OZ
+                        SIZE: {selectedSize} OZ
                       </Text>
                     </div>
                     <div className='view-btn padding'>
-                      <Button variant='outline' colorScheme='grey'>
+                      <Button
+                        variant='outline'
+                        colorScheme='grey'
+                        borderColor={
+                          selectedSize === findProduct.size
+                            ? 'solid'
+                            : 'transparent'
+                        }
+                        borderWidth='2px'
+                        onClick={() => handleSizeButtonClick(findProduct.size)}
+                      >
                         {findProduct.size}0 oz
                       </Button>
-                      <Button variant='outline' colorScheme='grey'>
+                      <Button
+                        variant='outline'
+                        colorScheme='grey'
+                        borderColor={
+                          selectedSize === findProduct.sizetwo
+                            ? 'solid'
+                            : 'transparent'
+                        }
+                        borderWidth='2px'
+                        onClick={() =>
+                          handleSizeButtonClick(findProduct.sizetwo)
+                        }
+                      >
                         {findProduct.sizetwo}0 oz
                       </Button>
                     </div>
@@ -114,19 +155,24 @@ const ItemView = ({ products }: { products: any }) => {
                         data-item-id={findProduct.id}
                         data-item-image={findProduct.image}
                         data-item-name={findProduct.name}
-                        // data-item-url='/products/:id'
-                        data-item-description={findProduct.description}
-                        data-item-price={findProduct.price}
-                        data-item-size={findProduct.size}
+                        data-item-description={selectInfo}
+                        data-item-price={selectPrice}
+                        data-item-size={selectedSize}
                       >
                         Add To Cart
                       </Button>
                       <Button
-                        // className='snipcart-checkout'
                         id='btn-style'
                         size='lg'
                         variant='solid'
                         colorScheme='black'
+                        className='snipcart-add-item'
+                        data-item-id={findProduct.id}
+                        data-item-image={findProduct.image}
+                        data-item-name={findProduct.name}
+                        data-item-description={selectInfo}
+                        data-item-price={selectPrice}
+                        data-item-size={selectedSize}
                       >
                         Buy Now
                       </Button>
@@ -143,7 +189,7 @@ const ItemView = ({ products }: { products: any }) => {
                                 <AccordionIcon />
                               </AccordionButton>
                             </h1>
-                            <AccordionPanel>
+                            <AccordionPanel pb={4}>
                               {findProduct.productdescription}
                             </AccordionPanel>
                           </AccordionItem>
