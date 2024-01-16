@@ -177,7 +177,7 @@ const ItemView = ({ products }: { products: any }) => {
                         Buy Now
                       </Button>
                       <div>
-                        <Accordion w='100%' marginTop={8} allowToggle>
+                        <Accordion marginTop={8} allowToggle>
                           <AccordionItem>
                             <h1>
                               <AccordionButton
@@ -189,7 +189,7 @@ const ItemView = ({ products }: { products: any }) => {
                                 <AccordionIcon />
                               </AccordionButton>
                             </h1>
-                            <AccordionPanel pb={4}>
+                            <AccordionPanel>
                               {findProduct.productdescription}
                             </AccordionPanel>
                           </AccordionItem>
